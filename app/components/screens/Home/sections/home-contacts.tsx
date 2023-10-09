@@ -59,7 +59,7 @@ export const HomeContacts: FC = () => {
           </div>
           <div className="flex w-3/5 flex-col gap-5  h-full">
             <div className="flex gap-x-5">
-              <div className="w-1/2 rounded-[3.75rem] leading-[160%] text-gray-500	 text-lg font-semibold tracking-tight p-8 bg-[#F8F9FA] flex flex-col gap-y-5">
+              <div className="w-1/2 rounded-xl leading-[160%] text-gray-500	 text-lg font-semibold tracking-tight p-8 bg-[#F8F9FA] flex flex-col gap-y-5">
                 <h5 className="text-2xl font-semibold text-black">
                   Personal info
                 </h5>
@@ -77,7 +77,7 @@ export const HomeContacts: FC = () => {
                   <span className="text-black">remote</span> work opportunities.
                 </p>
               </div>
-              <div className="w-1/2 rounded-[3.75rem] leading-[160%] text-gray-100	 text-lg font-semibold tracking-tight p-8 bg-primary flex flex-col gap-y-5">
+              <div className="w-1/2 rounded-xl leading-[160%] text-gray-100	 text-lg font-semibold tracking-tight p-8 bg-primary flex flex-col gap-y-5">
                 <h5 className="text-2xl font-semibold">Personal info</h5>
                 <p>
                   I was born in Irpin,{" "}
@@ -94,8 +94,8 @@ export const HomeContacts: FC = () => {
                 </p>
               </div>
             </div>
-            <div className="flex w-full flex-nowrap flex-col rounded-[3.75rem] p-8 bg-[#F8F9FA] gap-y-5">
-              <h5 className="text-2xl font-semibold">Personal info</h5>
+            <div className="flex w-full flex-nowrap flex-col rounded-xl p-8 bg-[#F8F9FA] gap-y-5">
+              <h5 className="text-2xl font-semibold">GitHub Stats</h5>
               <div className="flex w-full flex-nowrap gap-y-5">
                 <img
                   alt=""

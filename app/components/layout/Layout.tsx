@@ -12,7 +12,7 @@ export const UContext = createContext({});
 
 const Layout: FC<{ children: ReactElement }> = ({ children }) => {
   const theme = useSwitchTheme();
-  const cursorREF = useRef();
+  const cursorREF = useRef(null);
 
   useEffect(() => {
     document.onmousemove = (ev) => {
