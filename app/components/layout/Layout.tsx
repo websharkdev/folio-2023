@@ -11,7 +11,6 @@ import { motion, useScroll, useSpring } from "framer-motion";
 export const UContext = createContext({});
 
 const Layout: FC<{ children: ReactElement }> = ({ children }) => {
-  const theme = useSwitchTheme();
   const cursorREF = useRef(null);
 
   useEffect(() => {
@@ -36,17 +35,11 @@ const Layout: FC<{ children: ReactElement }> = ({ children }) => {
     <UContext.Provider value={{}}>
       <motion.div className="progress-bar" style={{ scaleX }} />
       <div className="cursor" ref={cursorREF} />
-      <div
-        className={`${styles.layout} ${
-          theme.isLight ? "bg-white" : "bg-[#212121]"
-        }`}
-      >
-        <div className="container py-5 z-10">
+      <div className={`${styles.layout} bg-white dark:bg-[#212121]`}>
+        <div className="container py-5 z-10 flex flex-col gap-y-5">
           <Header />
           <div className={styles.page}>{children}</div>
-          <div className={styles.footer}>
-            <Footer />
-          </div>
+          <Footer />
         </div>
       </div>
     </UContext.Provider>

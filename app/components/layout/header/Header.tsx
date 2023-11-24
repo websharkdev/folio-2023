@@ -1,45 +1,44 @@
 "use client";
 
-import { LightThemeIcon, NightThemeIcon } from "@/assets/icons/ui";
 import { Button } from "@/components/ui/button";
-import { useSwitchTheme } from "@/hooks/useSwitchTheme";
-import Image from "next/image";
+import { useLanguage } from "@/hooks/useLanguage";
+import { MoonIcon, SunIcon } from "lucide-react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
-// import { UserButton } from "@clerk/nextjs";
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback } from "react";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 type Props = {};
 
 const menu = ["home", "about", "works", "blog", "contacts"];
-const languages = ["en", "es", "ua"];
 
 export const Header: FC<Props> = () => {
-  const [current, setCurrent] = useState({
-    link: "home",
-    theme: "light",
-    language: "en",
-  });
+  const { currentLanguage, toggleLanguage, languages } = useLanguage();
+  const { setTheme, theme } = useTheme();
 
-  const theme = useSwitchTheme();
-  const handleLanguage = useCallback(() => {}, []);
-  const handleLink = useCallback(() => {}, []);
+  const handleLanguage = useCallback((language: string) => {
+    toggleLanguage(language);
+  }, []);
+
   return (
     <div
       className={`container flex justify-between items-center sticky top-5 z-20`}
     >
       <div
-        className={`py-6 px-[34px] rounded-full  ${
-          theme.isLight ? "bg-[#F8F9FA]" : "bg-[#2E2E2E]"
-        } flex justify-between items-center`}
+        className={`py-6 px-[34px] rounded-full bg-[#F8F9FA] dark:bg-[#191919] flex justify-between items-center`}
       >
         {menu.map((item: string, index: number) => (
           <Link
             key={`${item}_${index}`}
             href={`#${item}`}
-            className={`menu-item py-2.5 px-3 rounded-full hover:bg-primary hover:text-white flex justify-between items-center duration-300 transition ${
-              !theme.isLight && "text-white"
-            } ${
-              current.link === item ? "bg-primary text-white" : "bg-silver"
-            } ease-in-out font-semibold text-lg`}
+            className={`menu-item py-2.5 px-3 rounded-full hover:bg-primary dark:hover:bg-primary hover:text-white flex justify-between items-center duration-300 transition dark:text-white bg-silver ease-in-out font-semibold text-lg dark:bg-[#1e1e1e]`}
           >
             {item}.
           </Link>
@@ -47,34 +46,36 @@ export const Header: FC<Props> = () => {
       </div>
 
       <div
-        className={`py-6 px-[34px] rounded-full ${
-          theme.isLight ? "bg-[#F8F9FA]" : "bg-[#2E2E2E]"
-        } flex justify-between items-center gap-x-6`}
+        className={`py-6 px-[34px] rounded-full bg-[#F8F9FA] dark:bg-[#191919] flex justify-between items-center gap-x-6`}
       >
+        <Select onValueChange={(language: string) => handleLanguage(language)}>
+          <SelectTrigger className="rounded-full p-4 w-14 h-14 dark:bg-[#212121] font-semibold border-none">
+            <SelectValue placeholder={currentLanguage} />
+          </SelectTrigger>
+          <SelectContent>
+            {languages.map((language: string, index: number) => (
+              <SelectItem value={language} key={index}>
+                {language}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
         <Button
           variant="outline"
           size="icon"
-          className="rounded-full p-4 w-14 h-14"
-          onClick={handleLanguage}
+          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          className={`rounded-full p-4 w-14 h-14 relative dark:bg-[#212121] border-none`}
         >
-          <p className="transition  ease-in-out font-semibold text-lg lowercase">
-            {current.language}
-          </p>
-        </Button>
-        <Button
-          variant="outline"
-          size="icon"
-          className={`rounded-full p-4 w-14 h-14`}
-          onClick={theme.isLight ? theme.onClose : theme.onOpen}
-        >
-          <Image
-            src={theme.isLight ? LightThemeIcon : NightThemeIcon}
-            alt={
-              theme.isLight
-                ? "light-theme-icon / sun"
-                : "night-theme-icon / lune"
-            }
-            className="w-6 h-6"
+          <MoonIcon
+            className={`w-4 h-4 aspect-square object-contain text-muted-foreground ${
+              theme === "light" ? "opacity-100" : "opacity-0"
+            }`}
+          />
+          <SunIcon
+            className={`w-4 h-4 aspect-square object-contain text-white absolute ${
+              theme === "dark" ? "opacity-100" : "opacity-0"
+            }`}
           />
         </Button>
       </div>
