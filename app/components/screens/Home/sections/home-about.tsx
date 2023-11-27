@@ -41,17 +41,17 @@ const stack = [
 export const HomeAbout: FC = () => {
   return (
     <div
-      className="container h-[100vmin] max-h-screen flex flex-col justify-between relative pt-16"
+      className="container h-screen xl:h-[100vmin] max-h-screen flex flex-col justify-between lg:justify-start gap-5 relative pt-16"
       id="about"
     >
       <h5 className="text-3xl	font-semibold lowercase">about.</h5>
       <div className="container flex gap-5">
-        <div className="w-1/3 flex items-end h-[80vmin]">
+        <div className="w-1/3 hidden xl:flex items-end h-[80vmin]">
           <div className="w-full max-h-80 rounded-[3.75rem] leading-[120%] text-6xl font-semibold tracking-tight px-9 pb-9 pt-32 bg-[#F8F9FA] dark:bg-[#191919]">
             <h2>Bortnytskyi Oleksii</h2>
           </div>
         </div>
-        <div className="w-2/3 rounded-[3.75rem] flex items-start gap-x-5">
+        <div className="w-full xl:w-2/3 rounded-[3.75rem] flex items-start gap-x-5">
           <div className="flex flex-col gap-y-5 w-1/2">
             <Slider
               slides={[

@@ -43,14 +43,14 @@ export const HomeContacts: FC = () => {
           <div className="flex w-2/5 bg-primary h-full p-8 rounded-[60px] flex-col flex-nowrap gap-8">
             <h4 className="text-2xl font-semibold text-white">Social media</h4>
             <div className="flex flex-nowrap items-center">
-              <div className="flex flex-wrap w-4/5 gap-2">
+              <div className="flex flex-wrap w-full xl:w-4/5 gap-2">
                 {social.map((item: any, index: number) => (
                   <Link
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     key={index}
-                    className="text-lg font-semibold text-primary py-2 px-5 bg-[#EDEDFC] hover:text-white hover:bg-[#5B5BFF] transition rounded-md lowercase"
+                    className="text-sm md:text-md lg:text-lg font-semibold text-primary py-2 px-5 bg-[#EDEDFC] hover:text-white hover:bg-[#5B5BFF] transition rounded-md lowercase"
                   >
                     {item.title}
                   </Link>
@@ -60,7 +60,7 @@ export const HomeContacts: FC = () => {
                 size="icon"
                 variant="ghost"
                 href="https://webshark.design/"
-                className="bg-white p-7 w-full h-full aspect-square rounded-[2rem]"
+                className="hidden xl:flex bg-white p-7 w-full h-full aspect-square rounded-[2rem]"
               >
                 <Image
                   src={ArrowNEXTIcon}
@@ -72,7 +72,7 @@ export const HomeContacts: FC = () => {
           </div>
           <div className="flex w-3/5 flex-col gap-5  h-full">
             <div className="flex gap-x-5">
-              <div className="w-1/2 rounded-[60px] leading-[160%] text-gray-500	 text-lg font-semibold tracking-tight p-8 bg-[#F8F9FA] flex flex-col gap-y-5">
+              <div className="w-full xl:w-1/2 rounded-[60px] leading-[160%] text-gray-500	 text-lg font-semibold tracking-tight p-8 bg-[#F8F9FA] flex flex-col gap-y-5">
                 <h5 className="text-2xl font-semibold text-black">
                   Personal info
                 </h5>
@@ -90,7 +90,7 @@ export const HomeContacts: FC = () => {
                   <span className="text-black">remote</span> work opportunities.
                 </p>
               </div>
-              <div className="w-1/2 rounded-[60px] leading-[160%] text-gray-100	 text-lg font-semibold tracking-tight p-8 bg-primary flex flex-col gap-y-5">
+              <div className="hidden xl:w-1/2 rounded-[60px] leading-[160%] text-gray-100	 text-lg font-semibold tracking-tight p-8 bg-primary xl:flex flex-col gap-y-5">
                 <h5 className="text-2xl font-semibold">Volunteer</h5>
                 <p className="text-white">
                   I&apos;d like to emphasize that I am a volunteer. While I may
@@ -108,12 +108,12 @@ export const HomeContacts: FC = () => {
               <div className="flex w-full flex-nowrap gap-y-5">
                 <img
                   alt=""
-                  className="w-1/2 h-44 aspect-video"
+                  className="w-full xl:w-1/2 h-44 aspect-video"
                   src="https://github-readme-stats.vercel.app/api?username=websharkdev&show_icons=true&theme=blood&include_all_commits=true&count_private=true&line_height=21"
                 />
                 <img
                   alt=""
-                  className="w-1/2 h-44 aspect-video"
+                  className="w-1/2 h-44 aspect-video hidden xl:flex"
                   src="https://github-readme-stats.vercel.app/api/top-langs/?username=websharkdev&theme=blood&layout=compact&langs_count=4"
                 />
               </div>

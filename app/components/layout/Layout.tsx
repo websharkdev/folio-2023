@@ -4,7 +4,6 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 
 import styles from "./layout.module.sass";
-import { useSwitchTheme } from "@/hooks/useSwitchTheme";
 
 import { motion, useScroll, useSpring } from "framer-motion";
 

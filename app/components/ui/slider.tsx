@@ -66,7 +66,7 @@ export default function Slider({ slides }: Props) {
           </Swiper>
         )}
       </div>
-      <div className="w-2/5  h-full flex flex-nowrap items-center gap-2 py-4">
+      <div className="w-2/5 h-full flex flex-nowrap items-center gap-2 py-4">
         <button
           id="prev-btn"
           className="bg-[#9191FF] h-full pointer rounded-full w-1/2 flex justify-center items-center px-5"

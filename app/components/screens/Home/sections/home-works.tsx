@@ -176,7 +176,7 @@ export const HomeWorks: FC = () => {
               >
                 <div className="flex items-center gap-x-9">
                   <h2 className="text-2xl font-semibold">{company.name}</h2>
-                  <div className="flex flex-nowrap items-center gap-x-3">
+                  <div className="hidden xl:flex flex-nowrap items-center gap-x-3">
                     {company.hashtags.map((hashtag: any, hashtagID: number) => (
                       <TooltipProvider
                         key={`${hashtag.name}_${hashtagID}`}
