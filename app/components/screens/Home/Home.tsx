@@ -16,7 +16,7 @@ export const Home: FC = () => {
       <HomeAbout />
       <HomeWorks />
       {/* <HomeUkraine /> */}
-      <HomeContacts />
+      {/* <HomeContacts /> */}
     </div>
   );
 };

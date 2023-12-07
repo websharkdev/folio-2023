@@ -1,42 +1,24 @@
 "use client";
 
 import { QRCodeImage } from "@/assets/icons/photos";
-import { ArrowNEXTIcon } from "@/assets/icons/ui";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import Link from "next/link";
 import { FC } from "react";
+import Contacts from "../contacts";
 
 type Props = {};
 
-const data = [
-  {
-    link: "mainto:alexey.bortnytskyi@gmail.com",
-    title: "alexey.bortnytskyi@gmail.com",
-  },
-  {
-    link: "tel:34680522262",
-    title: "34 680 522 262",
-  },
-  {
-    link: "https://github.com/websharkdev",
-    title: "github",
-  },
-  {
-    link: "https://webshark.notion.site/CV-bc75484ca7b1458eb7f0cab21e7e74ef?pvs=4",
-    title: "CV",
-  },
-];
-
 export const Footer: FC<Props> = () => {
   return (
-    <div className={`container flex justify-between items-center gap-x-5`}>
-      <div className="flex flex-col justify-between w-2/3 bg-primary dark:bg-primary p-8 rounded-[60px] gap-y-7 h-full">
+    <div
+      className={`container w-full flex justify-between items-start xl:items-end gap-5 flex-col xl:flex-row`}
+    >
+      <div className="flex flex-col order-10 lg:-order-5 justify-between flex-1 bg-primary dark:bg-primary p-8 rounded-[60px] gap-y-7 h-full w-full">
         <div className="flex bg-white p-8 rounded-3xl">
-          <div className="w-full xl:max-w-[600px]">
-            <h1 className="text-7xl font-semibold leading-[5.4rem] inline-block text-[#141414] dark:text-[#141414] relative">
+          <div className="w-full lg:max-w-xl xl:max-w-xl">
+            <h1 className="leading-slug md:leading-relaxed xl:leading-normal 2xl:leading-relaxed lg:text-7xl  xl:text-6xl 2xl:text-7xl font-semibold inline-block text-[#141414] dark:text-[#141414] relative">
               Bortnytskyi Oleksii
-              <span className="inline-block text-sm w-1/3 ml-6">
+              <span className="inline-block text-sm lg:w-1/3 w-1/2 xl:w-1/3 ml-6">
                 designer, developer, creator and just a cool pepper.
               </span>
             </h1>
@@ -50,8 +32,8 @@ export const Footer: FC<Props> = () => {
               className="w-[120px] aspect-square"
             />
           </div>
-          <div className="w-full xl:max-w-[600px]">
-            <h1 className="text-7xl font-semibold leading-[5.4rem] inline-block text-white relative">
+          <div className="w-full lg:max-w-2xl xl:max-w-2xl">
+            <h1 className="leading-normal md:leading-slug xl:leading-slug 2xl:leading-relaxed lg:text-7xl  xl:text-6xl 2xl:text-7xl  font-semibold inline-block text-white relative">
               Have a Cool Project?
               <Button
                 size="default"
@@ -65,40 +47,7 @@ export const Footer: FC<Props> = () => {
           </div>
         </div>
       </div>
-      <div className="flex w-1/3 items-end min-h-[470px]">
-        <div className="flex flex-col flex-nowrap gap-7 mt-5 bg-primary rounded-[3.75rem] p-8 h-max">
-          <h3 className="text-3xl font-semibold text-white">Contacts</h3>
-          <div className="flex flex-nowrap items-center">
-            <div className="flex flex-wrap w-4/5 gap-2">
-              {data.map((item: any, index: number) => (
-                <Link
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  key={index}
-                  className="text-lg font-semibold text-primary py-2 px-5 bg-[#EDEDFC] hover:text-white hover:bg-[#5B5BFF] transition rounded-md lowercase"
-                >
-                  {item.title}
-                </Link>
-              ))}
-            </div>
-            <div className="flex w-1/5 aspect-square">
-              <Button
-                size="icon"
-                variant="ghost"
-                href="https://webshark.design/"
-                className="bg-white p-7 w-full h-full rounded-[2rem]"
-              >
-                <Image
-                  src={ArrowNEXTIcon}
-                  alt={"arrow-next-icon"}
-                  className="w-full aspect-square object-contain"
-                />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Contacts title="Contacts" />
     </div>
   );
 };

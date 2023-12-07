@@ -35,7 +35,9 @@ const Layout: FC<{ children: ReactElement }> = ({ children }) => {
       <motion.div className="progress-bar" style={{ scaleX }} />
       <div className="cursor" ref={cursorREF} />
       <div className={`${styles.layout} bg-white dark:bg-[#212121]`}>
-        <div className="container py-5 z-10 flex flex-col gap-y-5">
+        <div
+          className={`container py-5 z-10 flex flex-col gap-y-5 ${styles.customContainer}`}
+        >
           <Header />
           <div className={styles.page}>{children}</div>
           <Footer />

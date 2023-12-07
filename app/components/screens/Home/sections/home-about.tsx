@@ -1,30 +1,8 @@
 "use client";
-import { ArrowNEXTIcon } from "@/assets/icons/ui";
-import { Button } from "@/components/ui/button";
+import Contacts from "@/components/layout/contacts";
 import Slider from "@/components/ui/slider";
 import TextSlider from "@/components/ui/textSlider";
-import Image from "next/image";
-import Link from "next/link";
 import { FC } from "react";
-
-const data = [
-  {
-    link: "mainto:alexey.bortnytskyi@gmail.com",
-    title: "alexey.bortnytskyi@gmail.com",
-  },
-  {
-    link: "tel:34680522262",
-    title: "34 680 522 262",
-  },
-  {
-    link: "https://github.com/websharkdev",
-    title: "github",
-  },
-  {
-    link: "https://webshark.notion.site/CV-bc75484ca7b1458eb7f0cab21e7e74ef?pvs=4",
-    title: "CV",
-  },
-];
 
 const stack = [
   "framer",
@@ -45,13 +23,13 @@ export const HomeAbout: FC = () => {
       id="about"
     >
       <h5 className="text-3xl	font-semibold lowercase">about.</h5>
-      <div className="container flex gap-5">
-        <div className="w-1/3 hidden xl:flex items-end h-[80vmin]">
+      <div className="container flex gap-5 justify-between">
+        <div className="w-1/3 xl:max-w-xl hidden xl:flex items-end h-[80vmin]">
           <div className="w-full max-h-80 rounded-[3.75rem] leading-[120%] text-6xl font-semibold tracking-tight px-9 pb-9 pt-32 bg-[#F8F9FA] dark:bg-[#191919]">
             <h2>Bortnytskyi Oleksii</h2>
           </div>
         </div>
-        <div className="w-full xl:w-2/3 rounded-[3.75rem] flex items-start gap-x-5">
+        <div className="w-full xl:w-2/3 xl:max-w-7xl rounded-[3.75rem] flex items-start gap-x-5">
           <div className="flex flex-col gap-y-5 w-1/2">
             <Slider
               slides={[
@@ -69,8 +47,8 @@ export const HomeAbout: FC = () => {
                 },
               ]}
             />
-            <div className="stack rounded-[3.75rem] bg-[#F8F9FA] dark:bg-[#191919]">
-              <h3 className="text-3xl font-semibold px-9 pt-9 pb-5">Stack</h3>
+            <div className="stack rounded-[3.75rem] bg-[#F8F9FA] dark:bg-[#191919] flex flex-col gap-6">
+              <h3 className="text-3xl font-semibold px-9 pt-9">Stack</h3>
               <TextSlider baseVelocity={5}>
                 {stack.map((item: string, index: number) => (
                   <div
@@ -81,38 +59,7 @@ export const HomeAbout: FC = () => {
                   </div>
                 ))}
               </TextSlider>
-              <div className="flex flex-col flex-nowrap gap-7 mt-5 bg-primary rounded-[3.75rem] p-8">
-                <h3 className="text-3xl font-semibold text-white">Contacts</h3>
-                <div className="flex flex-nowrap items-center">
-                  <div className="flex flex-wrap w-4/5 gap-2">
-                    {data.map((item: any, index: number) => (
-                      <Link
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        key={index}
-                        className="text-lg font-semibold text-primary py-2 px-5 bg-[#EDEDFC] hover:text-white hover:bg-[#5B5BFF] transition rounded-md lowercase"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="flex w-1/5 aspect-square">
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      href="https://webshark.design/"
-                      className="bg-white p-7 w-full h-full rounded-[2rem]"
-                    >
-                      <Image
-                        src={ArrowNEXTIcon}
-                        alt={"arrow-next-icon"}
-                        className="w-full aspect-square object-contain"
-                      />
-                    </Button>
-                  </div>
-                </div>
-              </div>
+              <Contacts title="Contacts" />
             </div>
           </div>
           <div className="flex flex-col gap-y-5 w-1/2">
@@ -148,7 +95,7 @@ export const HomeAbout: FC = () => {
                   based in Pamplona, Spain
                 </span>
                 , I am focused on
-                <span className="text-black dark:text-white">remote</span> work
+                <span className="text-black dark:text-white"> remote</span> work
                 opportunities.
               </p>
             </div>

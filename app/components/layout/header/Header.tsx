@@ -17,12 +17,11 @@ import {
 
 type Props = {};
 
-const menu = ["home", "about", "works", "blog", "contacts"];
+const menu = ["home", "about", "works", "blog"];
 
 export const Header: FC<Props> = () => {
   const { currentLanguage, toggleLanguage, languages } = useLanguage();
   const [isClient, setIsClient] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const { setTheme, theme } = useTheme();
 
   const handleLanguage = useCallback((language: string) => {
@@ -31,12 +30,9 @@ export const Header: FC<Props> = () => {
 
   useEffect(() => {
     setIsClient(true);
-
-    // typeof window !== undefined;
   }, []);
 
   useEffect(() => {
-    console.log(theme);
     if (theme === undefined) {
       setTheme("light");
     }

@@ -19,6 +19,17 @@ type Props = {
   }[];
 };
 
+const sliderArrows = [
+  {
+    icon: ArrowPREVIcon,
+    id: "prev-btn",
+  },
+  {
+    icon: ArrowNEXTIcon,
+    id: "next-btn",
+  },
+];
+
 export default function Slider({ slides }: Props) {
   const [active, setActive] = useState<number>(0);
 
@@ -67,26 +78,23 @@ export default function Slider({ slides }: Props) {
         )}
       </div>
       <div className="w-2/5 h-full flex flex-nowrap items-center gap-2 py-4">
-        <button
-          id="prev-btn"
-          className="bg-[#9191FF] h-full pointer rounded-full w-1/2 flex justify-center items-center px-5"
-        >
-          <Image
-            src={ArrowPREVIcon}
-            alt="Arrow-PREV-icon"
-            className="aspect-square object-contain w-full"
-          />
-        </button>
-        <button
-          id="next-btn"
-          className="bg-[#2525DE] h-full pointer rounded-full w-1/2 flex justify-center items-center px-5"
-        >
-          <Image
-            src={ArrowNEXTIcon}
-            alt="Arrow-NEXT-icon"
-            className="aspect-square object-contain w-full"
-          />
-        </button>
+        {sliderArrows.map(({ id, icon }, index) => (
+          <button
+            id={id}
+            key={index}
+            className={`${
+              id === "next-btn" ? "bg-[#2525DE]" : "bg-[#9191FF]"
+            } h-full pointer rounded-full w-1/2 flex justify-center items-center px-5`}
+          >
+            <Image
+              src={icon}
+              alt={`Arrow-${id}-icon`}
+              width={42}
+              height={42}
+              className="aspect-square object-contain w-full max-w-[42px]"
+            />
+          </button>
+        ))}
       </div>
     </div>
   );
