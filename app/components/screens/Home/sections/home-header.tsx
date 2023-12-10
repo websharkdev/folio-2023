@@ -22,12 +22,14 @@ const Text = () => {
     },
   ];
 
+  const textSize = w > 400 ? 20 : 15;
+
   return (
     <>
       {texts.map((item, id: number) => (
         <Text3D
           font="/Montserrat_Bold.json"
-          size={w / 20}
+          size={w / textSize}
           height={0.05}
           key={id}
           position={item.position}
@@ -47,10 +49,6 @@ export const HomeHeader: FC = () => {
         className="container h-[85dvh] flex items-end justify-end relative"
         id="home"
       >
-        {/* <h1 className="z-10 text-4xl md:text-6xl xl:text-9xl text-center font-semibold lowercase text-[#FAFAFA] dark:text-[#202020] absolute top-1/2 left-1/2 -translate-y-2/4	-translate-x-2/4 w-full max-w-2xl xl:max-w-7xl">
-          creative front-end developer
-        </h1> */}
-
         <div className="card bg-[#F8F9FA] dark:bg-[#1d1d1d] p-5 md:p-9 rounded-3xl md:rounded-[60px] gap-10 z-10 flex items-center justify-between w-full md:w-max xl:max-w-3xl">
           <h2 className="leading-relaxed text-2xl sm:text-4xl md:text-5xl 2xl:text-7xl font-semibold inline text-[#141414] dark:text-[#eee]">
             Bortnytskyi <br />
@@ -65,7 +63,9 @@ export const HomeHeader: FC = () => {
           <Image
             src={HeaderPhoto}
             alt="Oleksii Bortnytksyi photo / medium"
-            className={`aspect-square object-contain hidden xs:flex sm:flex w-24 md:w-32 xl:w-36 2xl:w-44`}
+            className={`aspect-square object-contain hidden xs:flex sm:flex ${
+              window.innerWidth > 425 ? "w-24" : "w-16"
+            } md:w-32 xl:w-36 2xl:w-44`}
           />
         </div>
 
@@ -73,7 +73,6 @@ export const HomeHeader: FC = () => {
 
         <div className="h-full w-full absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4">
           <Canvas
-            linear
             flat
             camera={{
               fov: 45,

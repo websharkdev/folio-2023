@@ -37,7 +37,7 @@ export const Footer: FC<Props> = () => {
             </div>
           )}
           <div className="w-full lg:max-w-2xl xl:max-w-2xl">
-            <h1 className="leading-normal md:leading-slug text-3xl lg:text-7xl xl:text-6xl 2xl:text-7xl font-semibold inline-block text-white relative">
+            <h1 className="leading-normal md:leading-slug text-3xl lg:text-7xl xl:text-6xl 2xl:text-7xl font-semibold inline-block text-white relative max-w-[300px] md:max-w-none">
               Have a Cool Project?
               <Button
                 size="default"
