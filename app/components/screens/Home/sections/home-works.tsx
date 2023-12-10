@@ -9,6 +9,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { FC } from "react";
+import { useMediaQuery } from "usehooks-ts";
 
 const data = [
   {
@@ -142,19 +143,21 @@ const data = [
 const category = ["Company", "Pet-Projects"];
 
 export const HomeWorks: FC = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <div
-      className="container h-[100vmin] max-h-screen flex flex-col relative pt-16 gap-y-9"
+      className="container h-max md:h-[100vmin] min-h-max max-h-none md:max-h-screen flex flex-col relative pt-16 gap-9 mb-64 md:mb-0"
       id="works"
     >
-      <h5 className="section-title text-3xl	font-semibold lowercase">works.</h5>
+      <h5 className="text-2xl md:text-3xl	font-semibold lowercase">works.</h5>
       <div className="container flex gap-5">
         <Tabs
-          defaultValue={category[0].toLocaleLowerCase()}
-          className="flex flex-nowrap w-full gap-x-5"
-          orientation="vertical"
+          defaultValue={isMobile ? undefined : category[0].toLocaleLowerCase()}
+          className="flex flex-nowrap w-full gap-5 flex-col md:flex-row"
+          orientation={isMobile ? "horizontal" : "vertical"}
         >
-          <TabsList className="w-2/5 flex gap-y-5">
+          <TabsList className="w-full md:w-2/5 flex gap-y-5">
             {category.map((category: string, index: number) => (
               <TabsTrigger key={index} value={category.toLocaleLowerCase()}>
                 {category} (
@@ -168,14 +171,16 @@ export const HomeWorks: FC = () => {
               </TabsTrigger>
             ))}
           </TabsList>
-          <TabsList className="w-3/5 flex gap-y-5 flex-nowrap flex-col">
+          <TabsList className="w-full md:w-3/5 flex gap-y-5 flex-nowrap flex-col">
             {data.map((company: any, index: number) => (
               <TabsContent
                 key={`${company.name}_${index}`}
                 value={company.category.toLocaleLowerCase()}
               >
                 <div className="flex items-center gap-x-9">
-                  <h2 className="text-2xl font-semibold">{company.name}</h2>
+                  <h2 className="text-xl md:text-2xl font-semibold">
+                    {company.name}
+                  </h2>
                   <div className="hidden xl:flex flex-nowrap items-center gap-x-3">
                     {company.hashtags.map((hashtag: any, hashtagID: number) => (
                       <TooltipProvider
@@ -199,13 +204,13 @@ export const HomeWorks: FC = () => {
                   </div>
                 </div>
                 <div className="period flex flex-nowrap items-center gap-x-9">
-                  <h6 className="text-base font-semibold">
+                  <h6 className="hidden md:flex text-base font-semibold">
                     ({company.period})
                   </h6>
                   <Button
                     size="icon"
                     variant="ghost"
-                    className="bg-primary w-14 h-14 p-6 aspect-square rounded-full text-white hover:text-primary"
+                    className="bg-blend-lighten bg-[#5757FF] w-14 h-14 p-6 aspect-square rounded-full text-white hover:text-primary"
                   >
                     <svg
                       className="w-3 aspect-square object-contain"

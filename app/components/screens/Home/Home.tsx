@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import {
   HomeAbout,
   HomeContacts,
@@ -11,12 +11,14 @@ import {
 
 export const Home: FC = () => {
   return (
-    <div className="relative flex flex-col flex-nowrap gap-y-5">
-      <HomeHeader />
-      <HomeAbout />
-      <HomeWorks />
-      {/* <HomeUkraine /> */}
-      {/* <HomeContacts /> */}
-    </div>
+    <Suspense>
+      <div className="relative flex flex-col flex-nowrap gap-y-5">
+        <HomeHeader />
+        <HomeAbout />
+        <HomeWorks />
+        {/* <HomeUkraine /> */}
+        {/* <HomeContacts /> */}
+      </div>
+    </Suspense>
   );
 };

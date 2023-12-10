@@ -58,11 +58,11 @@ export default function TextSlider({ children, baseVelocity }: Props) {
 
   return (
     <div
-      className={`flex flex-nowrap overflow-hidden	m-0 whitespace-nowrap`}
+      className={`flex flex-nowrap overflow-hidden m-0 whitespace-nowrap h-full`}
       ref={ref}
     >
       <motion.div
-        className={`flex flex-nowrap m-0 whitespace-nowrap gap-2`}
+        className={`flex flex-nowrap m-0 whitespace-nowrap gap-2 h-max`}
         style={isInView ? { x } : { display: "none" }}
       >
         <span className="flex justify-between items-center flex-nowrap gap-2">

@@ -10,11 +10,15 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem 0",
+      padding: {
+        md: "1.5rem 0",
+        xs: '.5rem 0'
+      },
       screens: {
         "2xl": "1660px",
         xl: "1440px",
         md: "calc(100vw - 144px)",
+        xs: "calc(100vw - 44px)",
       },
     },
     extend: {
@@ -74,6 +78,7 @@ module.exports = {
       },
     },
     screens: {
+      xs: "400px",
       sm: "640px",
       md: "768px",
       lg: "1024px",

@@ -29,9 +29,9 @@ const Contacts = ({ title }: Props) => {
     },
   ];
   return (
-    <div className="flex bg-primary h-full p-8 rounded-[60px] flex-col flex-nowrap gap-6">
+    <div className="flex bg-primary h-full p-5 md:p-9 rounded-3xl md:rounded-[60px] flex-col flex-nowrap gap-6">
       {title ? (
-        <h4 className="text-md xl:text-3xl font-semibold text-white">
+        <h4 className="text-2xl md:text-3xl font-semibold text-white">
           {title}
         </h4>
       ) : null}
@@ -43,7 +43,7 @@ const Contacts = ({ title }: Props) => {
               target="_blank"
               rel="noopener noreferrer"
               key={index}
-              className="text-sm lg:text-md font-semibold text-primary py-2 px-5 bg-[#EDEDFC] hover:text-white hover:bg-[#5B5BFF] transition rounded-md lowercase"
+              className="text-xs sm:text-sm lg:text-md font-semibold text-primary py-2 px-5 bg-[#EDEDFC] hover:text-white hover:bg-[#5B5BFF] transition rounded-md lowercase"
             >
               {item.title}
             </Link>
@@ -53,7 +53,7 @@ const Contacts = ({ title }: Props) => {
           size="icon"
           variant="secondary"
           href="https://webshark.design/"
-          className="flex bg-white p-7 w-full h-full lg:min-w-[90px] aspect-square rounded-[2rem] flex-1"
+          className="hidden xs:flex bg-white p-5 sm:p-7 w-full h-full lg:min-w-[90px] aspect-square rounded-3xl sm:rounded-[2rem] flex-1"
         >
           <Image
             src={ArrowNEXTIcon}

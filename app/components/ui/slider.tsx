@@ -11,6 +11,7 @@ import { ArrowNEXTIcon, ArrowPREVIcon } from "@/assets/icons/ui";
 import Image from "next/image";
 import { useState } from "react";
 import { EffectCards, Navigation } from "swiper/modules";
+import { useMediaQuery } from "usehooks-ts";
 
 type Props = {
   slides: {
@@ -31,13 +32,14 @@ const sliderArrows = [
 ];
 
 export default function Slider({ slides }: Props) {
+  const isMobile = useMediaQuery("(max-width: 612px)");
   const [active, setActive] = useState<number>(0);
 
   return (
     <div
-      className={`slider w-full flex justify-between items-center flex-nowrap bg-primary h-72 rounded-[3.75rem] px-4 gap-8 `}
+      className={`slider w-full flex justify-between items-center flex-nowrap bg-primary h-72 rounded-3xl md:rounded-[60px] px-4 gap-8 `}
     >
-      <div className="w-3/5 h-full ">
+      <div className={`${isMobile ? "w-full" : "w-3/5"} h-full`}>
         {slides.length > 0 && (
           <Swiper
             effect={"cards"}
@@ -45,10 +47,14 @@ export default function Slider({ slides }: Props) {
             modules={[EffectCards, Navigation]}
             className={`bg-primary h-72 rounded-[3.75rem]`}
             onSlideChange={(swiper) => setActive(swiper.activeIndex)}
-            navigation={{
-              nextEl: "#next-btn",
-              prevEl: "#prev-btn",
-            }}
+            navigation={
+              !isMobile
+                ? {
+                    nextEl: "#next-btn",
+                    prevEl: "#prev-btn",
+                  }
+                : undefined
+            }
           >
             {slides.map((slide, index: number) => (
               <SwiperSlide key={index}>
@@ -67,7 +73,7 @@ export default function Slider({ slides }: Props) {
                   <span
                     className={`text-base text-center ${
                       active === index ? "text-white" : "text-[#5B5BFF55]"
-                    } font-semibold transition`}
+                    } font-semibold transition mt-3`}
                   >
                     {slide.text}
                   </span>
@@ -77,25 +83,27 @@ export default function Slider({ slides }: Props) {
           </Swiper>
         )}
       </div>
-      <div className="w-2/5 h-full flex flex-nowrap items-center gap-2 py-4">
-        {sliderArrows.map(({ id, icon }, index) => (
-          <button
-            id={id}
-            key={index}
-            className={`${
-              id === "next-btn" ? "bg-[#2525DE]" : "bg-[#9191FF]"
-            } h-full pointer rounded-full w-1/2 flex justify-center items-center px-5`}
-          >
-            <Image
-              src={icon}
-              alt={`Arrow-${id}-icon`}
-              width={42}
-              height={42}
-              className="aspect-square object-contain w-full max-w-[42px]"
-            />
-          </button>
-        ))}
-      </div>
+      {!isMobile ? (
+        <div className="w-2/5 h-full flex flex-nowrap items-center gap-2 py-4">
+          {sliderArrows.map(({ id, icon }, index) => (
+            <button
+              id={id}
+              key={index}
+              className={`${
+                id === "next-btn" ? "bg-[#2525DE]" : "bg-[#9191FF]"
+              } h-full pointer rounded-full w-1/2 flex justify-center items-center px-5`}
+            >
+              <Image
+                src={icon}
+                alt={`Arrow-${id}-icon`}
+                width={42}
+                height={42}
+                className="aspect-square object-contain w-full max-w-[42px]"
+              />
+            </button>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

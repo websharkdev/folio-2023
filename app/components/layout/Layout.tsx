@@ -1,4 +1,11 @@
-import { FC, ReactElement, createContext, useEffect, useRef } from "react";
+import {
+  FC,
+  ReactElement,
+  createContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -6,11 +13,18 @@ import { Header } from "@/components/layout/header";
 import styles from "./layout.module.sass";
 
 import { motion, useScroll, useSpring } from "framer-motion";
+import { useMediaQuery } from "usehooks-ts";
 
 export const UContext = createContext({});
 
 const Layout: FC<{ children: ReactElement }> = ({ children }) => {
   const cursorREF = useRef(null);
+  const [isClient, setIsClient] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 612px)");
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     document.onmousemove = (ev) => {
@@ -33,15 +47,21 @@ const Layout: FC<{ children: ReactElement }> = ({ children }) => {
   return (
     <UContext.Provider value={{}}>
       <motion.div className="progress-bar" style={{ scaleX }} />
-      <div className="cursor" ref={cursorREF} />
+      {isClient && !isMobile ? (
+        <div className="cursor" ref={cursorREF} />
+      ) : null}
       <div className={`${styles.layout} bg-white dark:bg-[#212121]`}>
-        <div
-          className={`container py-5 z-10 flex flex-col gap-y-5 ${styles.customContainer}`}
-        >
-          <Header />
-          <div className={styles.page}>{children}</div>
-          <Footer />
-        </div>
+        {isClient ? (
+          <div
+            className={`container py-5 z-10 flex flex-col gap-y-5 ${styles.customContainer}`}
+          >
+            <Header />
+            <div className={styles.page}>{children}</div>
+            <Footer />
+          </div>
+        ) : (
+          "Loading.."
+        )}
       </div>
     </UContext.Provider>
   );
