@@ -4,12 +4,16 @@ import { HeaderPhoto } from "@/assets/icons/photos";
 import { Button } from "@/components/ui/button";
 import { Center, Float, PresentationControls, Text3D } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import { FC } from "react";
 import { Vector3 } from "three";
 
 const Text = () => {
-  const TextMaterial = () => <meshBasicMaterial color="#fafafa" />;
+  const { theme } = useTheme();
+  const TextMaterial = () => (
+    <meshBasicMaterial color={theme === "light" ? "#fafafa" : "#141414"} />
+  );
   const { width: w, height: h } = useThree((state) => state.viewport);
   const texts = [
     {

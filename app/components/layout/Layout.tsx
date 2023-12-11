@@ -14,6 +14,7 @@ import styles from "./layout.module.sass";
 
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useMediaQuery } from "usehooks-ts";
+import { useProgress } from "@react-three/drei";
 
 export const UContext = createContext({});
 
@@ -21,6 +22,7 @@ const Layout: FC<{ children: ReactElement }> = ({ children }) => {
   const cursorREF = useRef(null);
   const [isClient, setIsClient] = useState(false);
   const isMobile = useMediaQuery("(max-width: 612px)");
+  const progress = useProgress();
 
   useEffect(() => {
     setIsClient(true);
@@ -60,7 +62,7 @@ const Layout: FC<{ children: ReactElement }> = ({ children }) => {
             <Footer />
           </div>
         ) : (
-          "Loading.."
+          <div className="h-screen w-screen fixed left-0 right-0" />
         )}
       </div>
     </UContext.Provider>
