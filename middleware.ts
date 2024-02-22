@@ -5,9 +5,8 @@ const publicRoutes = ["/", "/fake"];
 
 export default authMiddleware({
   publicRoutes,
-  ignoredRoutes: ["/dashboard"],
 });
 
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: ["/dashboard"],
 };

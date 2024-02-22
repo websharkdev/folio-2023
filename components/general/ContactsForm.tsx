@@ -18,19 +18,19 @@ import { z } from "zod";
 type Props = {};
 
 const ContactsForm = (props: Props) => {
-  const [post, setPost] = useState("");
-  const [link, setLink] = useState("");
+  const defaultValues = {
+    post: "",
+    link: "",
+  };
   const form = useForm<z.infer<typeof ProductSchema>>({
     resolver: zodResolver(ProductSchema),
-    defaultValues: {
-      post,
-      link,
-    },
+    defaultValues,
   });
 
   const { execute, status } = useAction(createProduct, {
     onSuccess(data) {
       console.log(data.error);
+      form.reset(defaultValues);
     },
   });
 
