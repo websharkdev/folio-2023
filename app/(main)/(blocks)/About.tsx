@@ -1,5 +1,4 @@
 "use client";
-
 import { lazy } from "react";
 
 const Contacts = lazy(() => import("@/components/general/Contacts"));
@@ -33,9 +32,7 @@ const sliders = [
   },
 ];
 
-type Props = {};
-
-const About = (props: Props) => {
+const About = () => {
   return (
     <div
       className="h-max w-full flex flex-col justify-between lg:justify-start gap-5 relative pt-16"

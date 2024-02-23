@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1708535847513,
-      "tag": "0000_nebulous_lord_hawal",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1708537144572,
-      "tag": "0001_aromatic_roulette",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1708540231229,
-      "tag": "0002_plain_kylun",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1708622390542,
-      "tag": "0003_smooth_earthquake",
+      "when": 1708716541308,
+      "tag": "0000_harsh_umar",
       "breakpoints": true
     }
   ]

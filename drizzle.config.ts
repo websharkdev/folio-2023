@@ -11,5 +11,6 @@ export default {
   driver: "pg",
   dbCredentials: {
     connectionString: process.env.DRIZZLE_DATABASE_URL as string,
+    ssl: true,
   },
 } satisfies Config;

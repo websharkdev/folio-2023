@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "db:generate": "drizzle-kit generate:pg --config drizzle.config.ts",
+    "db:studio": "drizzle-kit studio",
     "db:push": "drizzle-kit push:pg --config drizzle.config.ts"
   },
   "dependencies": {
