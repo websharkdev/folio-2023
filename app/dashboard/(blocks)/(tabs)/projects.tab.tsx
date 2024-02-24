@@ -1,16 +1,15 @@
-import ContactsForm from "@/components/general/ContactsForm";
+import PorjectsForm from "@/components/general/ProjectsFrom";
 import { LinkIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 type Props = {
   data: any;
 };
 
-const ContactsTab = ({ data }: Props) => {
+const ProjectsTab = ({ data }: Props) => {
   return (
     <div className="w-full h-max">
-      <ContactsForm />
+      <PorjectsForm />
 
       <div className="flex flex-col gap-4 py-3">
         {data?.map((item: any) => (
@@ -32,4 +31,4 @@ const ContactsTab = ({ data }: Props) => {
   );
 };
 
-export default ContactsTab;
+export default ProjectsTab;

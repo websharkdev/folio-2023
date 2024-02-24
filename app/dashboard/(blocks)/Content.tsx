@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { useUser } from "@clerk/nextjs";
 import ContactsTab from "./(tabs)/contacts.tab";
+import ProjectsTab from "./(tabs)/projects.tab";
 
 type Props = {
   data: any;
@@ -10,6 +11,8 @@ type Props = {
 
 const DashboardContent = ({ data }: Props) => {
   const { user, isLoaded } = useUser();
+  const tabs = ["Contacts", "Projects"];
+
   return (
     <div className="w-full h-full min-h-[90vh] px-5">
       {isLoaded ? (
@@ -21,14 +24,20 @@ const DashboardContent = ({ data }: Props) => {
               className="flex justify-between items-start h-full gap-5"
             >
               <TabsList className="max-w-xs w-full">
-                <TabsTrigger value="contacts">Contacts</TabsTrigger>
-                <TabsTrigger value="projects">Projects</TabsTrigger>
+                {tabs.map((tabName, index) => (
+                  <TabsTrigger
+                    value={tabName.toLocaleLowerCase().split(" ").join("_")}
+                    key={index}
+                  >
+                    {tabName}
+                  </TabsTrigger>
+                ))}
               </TabsList>
               <TabsContent value="contacts" className="items-start max-h-max">
-                <ContactsTab data={data} />
+                <ContactsTab data={data.contacts} />
               </TabsContent>
               <TabsContent value="projects" className="items-start max-h-max">
-                <ContactsTab data={data} />
+                <ProjectsTab data={data.projects} />
               </TabsContent>
             </Tabs>
           ) : (

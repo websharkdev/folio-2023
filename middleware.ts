@@ -6,7 +6,9 @@ const publicRoutes = ["/", "/fake"];
 export default authMiddleware({
   publicRoutes,
 });
-
 export const config = {
-  matcher: ["/dashboard"],
+  // Protects all routes, including api/trpc.
+  // See https://clerk.com/docs/references/nextjs/auth-middleware
+  // for more information about configuring your Middleware
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };

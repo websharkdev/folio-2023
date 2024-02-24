@@ -12,7 +12,6 @@ import { createProduct } from "@/server/action";
 import { ProductSchema } from "@/types/product";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAction } from "next-safe-action/hooks";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 type Props = {};
@@ -39,13 +38,13 @@ const ContactsForm = (props: Props) => {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
           name="post"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Leave your review</FormLabel>
+              <FormLabel>Create new contact link</FormLabel>
               <FormControl>
                 <Input placeholder="Post" {...field} />
               </FormControl>
