@@ -35,11 +35,18 @@ export const getProduct = async () => {
 
 export const createProject = action(
   ProjectsSchema,
-  async ({ name, link, type, tooltip_title, tooltip_text }) => {
+  async ({ name, link, type, tooltip_title, tooltip_text, duration }) => {
     try {
       const newProject = await db
         .insert(projects)
-        .values({ name, link, type, tooltip_title, tooltip_text })
+        .values({
+          name,
+          link,
+          type,
+          tooltip_title,
+          tooltip_text,
+          duration,
+        })
         .returning();
       revalidatePath("/dashboard");
       return { sucsess: newProject };

@@ -1,6 +1,6 @@
 {
-  "id": "e13a0eed-23a5-40f9-a137-4c93113c54da",
-  "prevId": "f34b5cd2-8984-4bd9-a841-7b9c879aa068",
+  "id": "801fd7c0-f3ed-434f-b1e3-a2adf801347b",
+  "prevId": "c06ec281-047c-4535-81c5-1c63af0828d2",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -49,8 +49,8 @@
           "primaryKey": true,
           "notNull": true
         },
-        "post": {
-          "name": "post",
+        "name": {
+          "name": "name",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -75,6 +75,12 @@
         },
         "tooltip_text": {
           "name": "tooltip_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "duration": {
+          "name": "duration",
           "type": "text",
           "primaryKey": false,
           "notNull": true

@@ -14,6 +14,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAction } from "next-safe-action/hooks";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+
+import { format } from "date-fns";
+
 type Props = {};
 import {
   Select,
@@ -22,6 +25,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Calendar } from "../ui/calendar";
+import { CalendarIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const PorjectsForm = (props: Props) => {
   const defaultValues = {
@@ -30,6 +37,7 @@ const PorjectsForm = (props: Props) => {
     type: "company",
     tooltip_title: "",
     tooltip_text: "",
+    duration: "",
   };
   const form = useForm<z.infer<typeof ProjectsSchema>>({
     resolver: zodResolver(ProjectsSchema),
@@ -79,17 +87,32 @@ const PorjectsForm = (props: Props) => {
           name="type"
           render={({ field }) => (
             <FormItem>
-              <FormControl>
-                <Select>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Type" />
+                    <SelectValue
+                      placeholder="Type"
+                      className="text-left justify-start"
+                    />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem {...field}>company</SelectItem>
-                    <SelectItem {...field}>pet-projects</SelectItem>
-                    <SelectItem {...field}>open-source</SelectItem>
-                  </SelectContent>
-                </Select>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="company">company</SelectItem>
+                  <SelectItem value="pet-projects">pet-projects</SelectItem>
+                  <SelectItem value="open-source">open-source</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="duration"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Duration" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

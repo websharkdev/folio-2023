@@ -13,10 +13,19 @@ import { ReactNode, useLayoutEffect, useRef, useState } from "react";
 
 const Header = React.lazy(() => import("@/components/general/Header"));
 const Footer = React.lazy(() => import("@/components/general/Footer"));
+import posthog from "posthog-js";
+import { PostHogProvider } from "posthog-js/react";
 
+if (typeof window !== "undefined") {
+  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY as string, {
+    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+  });
+}
 const MainProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const cursorREF = useRef<HTMLDivElement | any>();
   const [isClient, setIsClient] = useState<boolean>(false);
+
+  posthog.capture("my event", { property: "value" });
 
   // console.log(
   //   "01111001 01101111 01110101 00100111 01110010 01100101  01100011 01110101 01110010 01101001 01101111 01110101 01110011 00101100  01001001  01101100 01101001 01101011 01100101  01101001 01110100 00101110  01010011 01110000 01100101 01100011 01101001 01100001 01101100  01100111 01110010 01100101 01100101 01110100 01101001 01101110 01100111 01110011 00100001"
@@ -44,24 +53,26 @@ const MainProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     restDelta: 0.001,
   });
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="light"
-      enableSystem
-      disableTransitionOnChange
-    >
-      {isClient && (
-        <div className="flex justify-between items-center flex-col gap-20 min-h-screen">
-          <motion.div className="progress-bar" style={{ scaleX }} />
-          <Header />
-          <div className="cursor" ref={cursorREF} />
-          <div className="flex flex-col gap-20 container w-full h-full">
-            {children}
+    <PostHogProvider client={posthog}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="light"
+        enableSystem
+        disableTransitionOnChange
+      >
+        {isClient && (
+          <div className="flex justify-between items-center flex-col gap-20 min-h-screen">
+            <motion.div className="progress-bar" style={{ scaleX }} />
+            <Header />
+            <div className="cursor" ref={cursorREF} />
+            <div className="flex flex-col gap-20 container w-full h-full">
+              {children}
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      )}
-    </ThemeProvider>
+        )}
+      </ThemeProvider>
+    </PostHogProvider>
   );
 };
 
