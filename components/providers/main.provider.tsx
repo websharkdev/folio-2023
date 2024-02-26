@@ -15,6 +15,8 @@ const Header = React.lazy(() => import("@/components/general/Header"));
 const Footer = React.lazy(() => import("@/components/general/Footer"));
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 if (typeof window !== "undefined") {
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY as string, {
@@ -69,6 +71,8 @@ const MainProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
               {children}
             </div>
             <Footer />
+            <SpeedInsights />
+            <Analytics />
           </div>
         )}
       </ThemeProvider>
