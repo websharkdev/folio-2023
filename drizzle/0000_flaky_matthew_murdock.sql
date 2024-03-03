@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS "projects" (
 	"type" text NOT NULL,
 	"tooltip_title" text NOT NULL,
 	"tooltip_text" text NOT NULL,
-	"start_date" timestamp DEFAULT now(),
-	"end_date" timestamp DEFAULT now(),
+	"duration" text NOT NULL,
 	"created" timestamp DEFAULT now()
 );
