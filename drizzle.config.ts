@@ -7,7 +7,6 @@ dotenv.config({
 
 export default {
   schema: "./server/schema.ts",
-  out: "./drizzle",
   driver: "pg",
   dbCredentials: {
     connectionString: process.env.DRIZZLE_DATABASE_URL as string,
